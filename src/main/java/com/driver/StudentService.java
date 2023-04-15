@@ -32,7 +32,7 @@ public class StudentService {
     }
 
     public List<String> getStudentByTeacherName(String teacher) {
-        return studentRepository.getStudentByTeacherName(teacher);
+        return studentRepository.getStudentsByTeacherName(teacher);
     }
 
     public List<String> getAllStudents() {
