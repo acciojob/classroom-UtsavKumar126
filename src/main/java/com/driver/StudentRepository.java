@@ -24,11 +24,15 @@ public class StudentRepository {
         Student student1=studentMap.get(student);
 
         if(teacherListMap.containsKey(teacher1)){
-            teacherListMap.get(teacher1).add(student1);
+            List<Student>students=teacherListMap.get(teacher1);
+            students.add(student1);
+            teacherListMap.put(teacher1,students);
         }
         else{
             teacherListMap.put(teacher1,new ArrayList<>());
-            teacherListMap.get(teacher1).add(student1);
+            List<Student>students=teacherListMap.get(teacher1);
+            students.add(student1);
+            teacherListMap.put(teacher1,students);
         }
     }
 
@@ -44,6 +48,7 @@ public class StudentRepository {
         Teacher teacher1=teacherMap.get(teacher);
 
         List<Student>students=teacherListMap.get(teacher1);
+
         List<String>required=new ArrayList<>();
 
         for(Student student:students){
@@ -63,7 +68,7 @@ public class StudentRepository {
     public void deleteTeacherByName(String teacher) {
         Teacher teacher1=teacherMap.get(teacher);
         List<Student>studentList=teacherListMap.get(teacher1);
-        teacherListMap.get(teacher1).clear();
+        teacherListMap.remove(teacher1);
         teacherMap.remove(teacher);
 
         for(Student student:studentList){
