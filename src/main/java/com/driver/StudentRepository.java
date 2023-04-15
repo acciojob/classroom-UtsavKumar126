@@ -6,10 +6,17 @@ import java.util.*;
 
 @Repository
 public class StudentRepository {
-    Map<String,Student> studentMap=new HashMap<>();
-    Map<String,Teacher>teacherMap=new HashMap<>();
-    Map<Teacher,List<Student>>teacherListMap=new HashMap<>();
-    Set<Student>studentset=new HashSet<>();
+    Map<String,Student> studentMap;
+    Map<String,Teacher>teacherMap;
+    Map<Teacher,List<Student>>teacherListMap;
+    Set<Student>studentset;
+
+    public StudentRepository(Map<String, Student> studentMap, Map<String, Teacher> teacherMap, Map<Teacher, List<Student>> teacherListMap, Set<Student> studentset) {
+        this.studentMap = new HashMap<>();
+        this.teacherMap = new HashMap<>();
+        this.teacherListMap = new HashMap<>();
+        this.studentset = new HashSet<>();
+    }
     public void addStudent(Student student) {
         studentMap.put(student.getName(),student);
         studentset.add(student);
